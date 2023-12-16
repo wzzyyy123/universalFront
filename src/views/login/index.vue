@@ -22,7 +22,7 @@
                   </el-form-item>
                   <div class="form-foot-wrapped">
                     <div class="forget-password">
-                      <span class="forget-password-button">忘记密码</span>
+                      <span class="forget-password-button" @click="openFoeget">忘记密码</span>
                     </div>
                     <div class="login-button">
                       <el-button type="primary">登录</el-button>
@@ -67,10 +67,12 @@
       </el-footer>
     </el-container>
   </div>
+  <forget ref="forgetPassword"></forget>
 </template>
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
+import forget from './components/forget_password.vue'
 
 const activeName = ref('first') //和el-tab-pane匹配，用于确定默认的标签页
 
@@ -90,6 +92,10 @@ const registerData: formData = reactive({
   password: '',
   repassword: ''
 })
+const forgetPassword = ref()
+const openFoeget = () => {
+  forgetPassword.value.open()
+}
 </script>
 
 <style lang="scss" scoped>
